@@ -12,6 +12,8 @@
   --color-slate: #4a5f6d;
   --color-charcoal: #2c3e50;
   --color-white: #ffffff;
+  --color-text-dark: #2c3e50;
+  --color-text-muted: #7a9aa8;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Montserrat', sans-serif;
 }
@@ -100,13 +102,39 @@ body {
   flex-direction: column;
   gap: 5px;
   z-index: 1100;
+  width: 38px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-toggle span {
-  width: 26px;
+  width: 100%;
   height: 2px;
   background-color: var(--color-text-dark);
+  border-radius: 1px;
   transition: all 0.3s ease;
+}
+
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-overlay.show {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* hero */
