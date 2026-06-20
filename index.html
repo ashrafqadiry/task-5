@@ -27,8 +27,10 @@
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-          ☰
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </nav>
@@ -257,5 +259,36 @@
     <footer class="footer">
       <p>© 2026 Winter Portfolio • Designed by Tooplate</p>
     </footer>
+
+    <script>
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      const navOverlay = document.getElementById('navOverlay');
+      const navItems = navLinks.querySelectorAll('a');
+
+      const closeMenu = () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('is-active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navOverlay.classList.remove('show');
+      };
+
+      const openMenu = () => {
+        navLinks.classList.add('open');
+        navToggle.classList.add('is-active');
+        navToggle.setAttribute('aria-expanded', 'true');
+        navOverlay.classList.add('show');
+      };
+
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      navOverlay.addEventListener('click', closeMenu);
+
+      navItems.forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    </script>
   </body>
 </html>
